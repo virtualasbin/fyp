@@ -5,3 +5,6 @@ __pycache__/
 venv/
 student_tasks.db
 tests/test_student_tasks.db
+docs/requirements/*.pdf
+docs/requirements/*.doc
+docs/requirements/*.docx
