@@ -199,6 +199,10 @@ function buildDashboardFromTasks(tasks) {
   };
 }
 
+function syncDashboardState() {
+  state.dashboard = buildDashboardFromTasks(state.tasks);
+}
+
 function formatDateTime(value) {
   const date = new Date(value);
   return date.toLocaleString();
@@ -341,7 +345,7 @@ function queueTaskAction(action) {
 }
 
 function applyOfflineTaskChange() {
-  state.dashboard = buildDashboardFromTasks(state.tasks);
+  syncDashboardState();
   saveCache();
   renderAll();
 }
@@ -442,7 +446,8 @@ function validateTaskForm() {
 }
 
 function renderDashboard() {
-  const dashboard = state.dashboard || buildDashboardFromTasks(state.tasks);
+  const dashboard = buildDashboardFromTasks(state.tasks);
+  state.dashboard = dashboard;
   elements.todaysTasks.textContent = dashboard.todays_tasks;
   elements.upcomingDeadlines.textContent = dashboard.upcoming_deadlines;
   elements.overdueCount.textContent = dashboard.overdue_count;
@@ -515,15 +520,20 @@ function renderFocusLists() {
   const nextWeek = new Date(now);
   nextWeek.setDate(nextWeek.getDate() + 7);
 
-  const todaysTasks = state.tasks.filter((task) => {
-    const due = new Date(task.due_date);
-    return due >= startOfToday && due < endOfToday;
-  });
+  const byDueDate = (left, right) => new Date(left.due_date) - new Date(right.due_date);
+  const todaysTasks = state.tasks
+    .filter((task) => {
+      const due = new Date(task.due_date);
+      return due >= startOfToday && due < endOfToday;
+    })
+    .sort(byDueDate);
 
-  const upcomingTasks = state.tasks.filter((task) => {
-    const due = new Date(task.due_date);
-    return due >= now && due <= nextWeek && task.status !== "completed";
-  });
+  const upcomingTasks = state.tasks
+    .filter((task) => {
+      const due = new Date(task.due_date);
+      return due >= now && due <= nextWeek && task.status !== "completed";
+    })
+    .sort(byDueDate);
 
   elements.todayList.innerHTML = todaysTasks.length
     ? todaysTasks.slice(0, 5).map((task) => `<li>${formatShortTaskLine(task)}</li>`).join("")
@@ -737,16 +747,15 @@ async function loadDashboardData() {
     return;
   }
 
-  const [dashboard, categories, tasks, settings] = await Promise.all([
-    performRequest("/api/dashboard"),
+  const [categories, tasks, settings] = await Promise.all([
     performRequest("/api/categories"),
     performRequest("/api/tasks"),
     performRequest("/api/settings"),
   ]);
 
-  state.dashboard = dashboard;
   state.categories = categories;
   state.tasks = tasks.map((task) => normalizeTask(task));
+  syncDashboardState();
   setSettingsState(settings);
   saveCache();
   renderAll();
@@ -851,7 +860,13 @@ async function handleTaskSubmit(event) {
   const method = taskId ? "PUT" : "POST";
 
   try {
-    await api(path, { method, body: JSON.stringify(payload) });
+    const savedTask = await api(path, { method, body: JSON.stringify(payload) });
+    if (navigator.onLine && savedTask) {
+      upsertLocalTask(savedTask);
+      syncDashboardState();
+      saveCache();
+      renderAll();
+    }
     resetTaskForm();
     showMessage(
       elements.taskMessage,
@@ -910,10 +925,16 @@ async function handleTaskListClick(event) {
 
   if (completeId) {
     try {
-      await api(`/api/tasks/${completeId}`, {
+      const updatedTask = await api(`/api/tasks/${completeId}`, {
         method: "PUT",
         body: JSON.stringify({ status: "completed" }),
       });
+      if (navigator.onLine && updatedTask) {
+        upsertLocalTask(updatedTask);
+        syncDashboardState();
+        saveCache();
+        renderAll();
+      }
       showMessage(
         elements.taskMessage,
         "success",
@@ -933,6 +954,12 @@ async function handleTaskListClick(event) {
   if (deleteId) {
     try {
       await api(`/api/tasks/${deleteId}`, { method: "DELETE" });
+      if (navigator.onLine) {
+        removeLocalTask(deleteId);
+        syncDashboardState();
+        saveCache();
+        renderAll();
+      }
       showMessage(
         elements.taskMessage,
         "success",
