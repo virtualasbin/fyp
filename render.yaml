@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: student-task-manager
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -m uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: student-task-manager-db
+          property: connectionString
+
+databases:
+  - name: student-task-manager-db
+    databaseName: studenttasks
+    plan: free
