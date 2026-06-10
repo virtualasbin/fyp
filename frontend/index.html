@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#4f46e5" />
+    <meta name="description" content="Student Task Management PWA for coursework and deadlines." />
+    <title>Student Task Manager</title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">University Productivity</p>
+          <h1>Student Task Manager</h1>
+        </div>
+        <div class="topbar-actions">
+          <span id="connectionBadge" class="status-badge">Online</span>
+          <button id="logoutButton" class="button button-secondary hidden" type="button">Logout</button>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section id="authSection" class="panel">
+          <div class="panel-header">
+            <h2>Welcome Back</h2>
+            <p>Register or sign in to manage coursework, deadlines, and reminders.</p>
+          </div>
+
+          <div class="auth-tabs">
+            <button id="showLoginTab" class="tab active" type="button">Login</button>
+            <button id="showRegisterTab" class="tab" type="button">Register</button>
+          </div>
+
+          <form id="loginForm" class="stack">
+            <label>
+              <span>Email</span>
+              <input id="loginEmail" name="email" type="email" autocomplete="email" required />
+              <small class="field-error" data-error-for="loginEmail"></small>
+            </label>
+            <label>
+              <span>Password</span>
+              <input id="loginPassword" name="password" type="password" autocomplete="current-password" required />
+              <small class="field-error" data-error-for="loginPassword"></small>
+            </label>
+            <button class="button" type="submit">Login</button>
+          </form>
+
+          <form id="registerForm" class="stack hidden">
+            <label>
+              <span>Full Name</span>
+              <input id="registerName" name="name" type="text" autocomplete="name" required />
+              <small class="field-error" data-error-for="registerName"></small>
+            </label>
+            <label>
+              <span>Email</span>
+              <input id="registerEmail" name="email" type="email" autocomplete="email" required />
+              <small class="field-error" data-error-for="registerEmail"></small>
+            </label>
+            <label>
+              <span>Password</span>
+              <input id="registerPassword" name="password" type="password" autocomplete="new-password" required />
+              <small class="field-error" data-error-for="registerPassword"></small>
+            </label>
+            <button class="button" type="submit">Create Account</button>
+          </form>
+
+          <div id="authMessage" class="message hidden"></div>
+        </section>
+
+        <section id="dashboardSection" class="hidden">
+          <div class="hero panel">
+            <div>
+              <p class="eyebrow">Student Dashboard</p>
+              <h2 id="welcomeMessage">Your Semester Overview</h2>
+              <p class="muted">Stay on top of today's tasks, upcoming deadlines, and progress across your coursework.</p>
+            </div>
+            <div class="hero-actions">
+              <button id="quickAddButton" class="button" type="button">Quick Add Task</button>
+              <button id="notificationButton" class="button button-secondary" type="button">Enable Notifications</button>
+              <button id="installButton" class="button button-secondary hidden" type="button">Install App</button>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <article class="stat-card panel">
+              <h3>Today's Tasks</h3>
+              <p id="todaysTasks" class="stat-value">0</p>
+            </article>
+            <article class="stat-card panel">
+              <h3>Upcoming Deadlines</h3>
+              <p id="upcomingDeadlines" class="stat-value">0</p>
+            </article>
+            <article class="stat-card panel">
+              <h3>Overdue</h3>
+              <p id="overdueCount" class="stat-value danger">0</p>
+            </article>
+            <article class="stat-card panel">
+              <h3>Completion Rate</h3>
+              <p id="completionRate" class="stat-value">0%</p>
+            </article>
+          </div>
+
+          <div class="content-grid">
+            <section class="panel">
+              <div class="panel-header">
+                <h2>Task Form</h2>
+                <p>Create or update tasks in one place.</p>
+              </div>
+              <form id="taskForm" class="stack">
+                <input id="taskId" type="hidden" />
+                <label>
+                  <span>Title</span>
+                  <input id="taskTitle" name="title" type="text" required />
+                  <small class="field-error" data-error-for="taskTitle"></small>
+                </label>
+                <label>
+                  <span>Description</span>
+                  <textarea id="taskDescription" name="description" rows="4"></textarea>
+                  <small class="field-error" data-error-for="taskDescription"></small>
+                </label>
+                <div class="form-grid">
+                  <label>
+                    <span>Due Date</span>
+                    <input id="taskDueDate" name="due_date" type="datetime-local" required />
+                    <small class="field-error" data-error-for="taskDueDate"></small>
+                  </label>
+                  <label>
+                    <span>Priority</span>
+                    <select id="taskPriority" name="priority">
+                      <option value="low">Low</option>
+                      <option value="medium" selected>Medium</option>
+                      <option value="high">High</option>
+                    </select>
+                  </label>
+                </div>
+                <div class="form-grid">
+                  <label>
+                    <span>Status</span>
+                    <select id="taskStatus" name="status">
+                      <option value="pending">Pending</option>
+                      <option value="in_progress">In Progress</option>
+                      <option value="completed">Completed</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span>Module / Category</span>
+                    <select id="taskCategory" name="category_id">
+                      <option value="">No module selected</option>
+                    </select>
+                  </label>
+                </div>
+                <label>
+                  <span>Reminder Time</span>
+                  <input id="taskReminder" name="reminder" type="datetime-local" />
+                  <small class="field-error" data-error-for="taskReminder"></small>
+                </label>
+                <div class="button-row">
+                  <button class="button" type="submit">Save Task</button>
+                  <button id="resetTaskButton" class="button button-secondary" type="button">Clear</button>
+                </div>
+              </form>
+              <div id="taskMessage" class="message hidden"></div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-header">
+                <h2>Today's Focus</h2>
+                <p>See the most urgent coursework items without extra navigation.</p>
+              </div>
+              <div class="focus-block">
+                <h3>Today's Tasks</h3>
+                <ul id="todayList" class="simple-list"></ul>
+              </div>
+              <div class="focus-block">
+                <h3>Upcoming Deadlines</h3>
+                <ul id="upcomingList" class="simple-list"></ul>
+              </div>
+            </section>
+          </div>
+
+          <section class="panel">
+            <div class="panel-header">
+              <h2>Modules / Categories</h2>
+              <p>Organize tasks by subject or module.</p>
+            </div>
+            <form id="categoryForm" class="inline-form">
+              <input id="categoryName" type="text" placeholder="e.g. Database Systems" required />
+              <button class="button" type="submit">Add Module</button>
+            </form>
+            <small class="field-error" data-error-for="categoryName"></small>
+            <ul id="categoryList" class="chip-list"></ul>
+          </section>
+
+          <section class="panel">
+            <div class="panel-header">
+              <h2>Settings</h2>
+              <p>Manage notification preferences, account details, and sync status.</p>
+            </div>
+            <div class="settings-grid">
+              <article class="settings-card">
+                <h3>Notification Preferences</h3>
+                <label class="toggle-row">
+                  <input id="notificationPreference" type="checkbox" />
+                  <span>Enable push reminders</span>
+                </label>
+                <p id="pushStatus" class="small-text muted">
+                  Push notifications are not enabled on this device yet.
+                </p>
+                <div class="button-row">
+                  <button id="testPushButton" class="button button-secondary" type="button">Send Test Notification</button>
+                </div>
+              </article>
+              <article class="settings-card">
+                <h3>Account Details</h3>
+                <p><strong>Name:</strong> <span id="accountName">-</span></p>
+                <p><strong>Email:</strong> <span id="accountEmail">-</span></p>
+              </article>
+              <article class="settings-card">
+                <h3>Sync Status</h3>
+                <p id="syncStatus">All changes are synced.</p>
+                <button id="syncNowButton" class="button button-secondary" type="button">Sync Now</button>
+              </article>
+            </div>
+            <div id="settingsMessage" class="message hidden"></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-header">
+              <h2>Tasks</h2>
+              <p>Actions stay within one or two clicks for quick updates, completion, and review.</p>
+            </div>
+            <div class="filter-grid">
+              <label>
+                <span>Module</span>
+                <select id="filterCategory">
+                  <option value="">All modules</option>
+                </select>
+              </label>
+              <label>
+                <span>Priority</span>
+                <select id="filterPriority">
+                  <option value="">All priorities</option>
+                  <option value="high">High</option>
+                  <option value="medium">Medium</option>
+                  <option value="low">Low</option>
+                </select>
+              </label>
+              <label>
+                <span>Status</span>
+                <select id="filterStatus">
+                  <option value="">All statuses</option>
+                  <option value="pending">Pending</option>
+                  <option value="in_progress">In Progress</option>
+                  <option value="completed">Completed</option>
+                </select>
+              </label>
+              <label>
+                <span>Sort</span>
+                <select id="sortTasks">
+                  <option value="due_asc">Due Date: Earliest</option>
+                  <option value="due_desc">Due Date: Latest</option>
+                  <option value="priority_desc">Priority: High to Low</option>
+                  <option value="priority_asc">Priority: Low to High</option>
+                  <option value="title_asc">Title: A-Z</option>
+                </select>
+              </label>
+            </div>
+            <div id="offlineBanner" class="message info hidden">
+              Offline mode is active. Showing cached dashboard and task data.
+            </div>
+            <div id="taskList" class="task-list"></div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>

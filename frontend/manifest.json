@@ -1,0 +1,17 @@
+{
+  "name": "Student Task Manager",
+  "short_name": "Tasks",
+  "description": "A progressive web app for students to manage coursework and deadlines.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f3f4f6",
+  "theme_color": "#4f46e5",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

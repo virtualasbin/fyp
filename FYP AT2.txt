@@ -1,0 +1,864 @@
+COM668 Computing Project 
+ 
+Assessment Task 2 – Challenge Definition Report 
+ 
+ 
+ 
+Project title:  Student Task Management Web Application 
+ 
+ 
+ 
+Student name:  Asbin Pandey 
+ 
+Student ID number:  B00927353 
+ 
+ 
+ 
+PSG identifier:  PSG-Q2  
+ 
+Mentor name:  Vijay Chennareddy 
+ 
+ 
+ 
+Course title:  Bsc (Hons) Computing System with Diploma in Professional Practice  
+ 
+Year of submission:  2024/2025 
+ 
+ 
+ 
+Word Count (3600 Maximum):  ~ 3300 
+ 
+ 
+Declaration:  
+I declare that this is all my own work. Any material I have referred to has been accurately referenced and any 
+contribution of Artificial Intelligence technology has been fully acknowledged. I understand the importance 
+of academic integrity and have read a nd understood the University’s General Regulation: Student Academic 
+Integrity and the Academic Misconduct Procedure. I understand that I must not upload my work before, during 
+or after submission to any unapproved plagiarism detectors or answer sharing pla tforms, or equivalent, and 
+that only University-approved platforms should be used.
+
+ i 
+Contents 
+Contents ...................................................................................................................... i 
+1. Problem definition ................................................................................................ 1 
+1.1. Aim ................................................................................................................... 1 
+1.2. Problem description .......................................................................................... 1 
+1.3. Scope ............................................................................................................... 1 
+1.4. Intended outcome ............................................................................................. 2 
+1.5. Objectives ........................................................................................................ 2 
+2. Contextual research ............................................................................................. 3 
+2.1. Context investigation ......................................................................................... 3 
+2.2. Supporting theory research................................................................................ 4 
+2.3. Similar products review ..................................................................................... 4 
+2.3.1 Todoist ................................................................................................................ 4 
+ ................................................................................................................................... 5 
+2.3.2 Microsoft To Do .............................................................................................. 5 
+ ................................................................................................................................... 5 
+3. Software definition ............................................................................................... 5 
+3.1. Requirements analysis ...................................................................................... 5 
+3.1.1 Stakeholders....................................................................................................... 6 
+3.2. Risk analysis ..................................................................................................... 6 
+3.2.1. Table: Risk Analysis Summary ........................................................................ 6 
+3.3. Design (including system design, data design, and User experience design) ........ 7 
+4. Planning ............................................................................................................. 11 
+4.1. Methodology ................................................................................................... 11 
+4.2. Initial plans ..................................................................................................... 11 
+References ............................................................................................................... 13 
+Appendices ............................................................................................................... 13 
+ 
+
+ 1 
+1. Problem definition 
+ 
+1.1. Aim  
+ 
+This project aims to create a simple, reliable web app that helps university students organise their 
+coursework and deadlines in one place while demonstrating strong, full-lifecycle software 
+engineering practice. 
+ 
+1.2. Problem description 
+ 
+Time management remains one of the most significant contributors to low academic performance. 
+Most students begin the term with plenty of motivation, but that sense of control quickly fades once 
+multiple deadlines collide and priorities shift unexpectedly. In reality, a student might receive 
+assignment briefs through one platform, feedback through another, and timetable changes via email. 
+This scattered flow of information makes planning far more complicated than it needs to be. The 
+outcome is a familiar cycle: work begins later than intended, the quality drops as submission dates 
+approach, stress rises, and confidence gradually declines (Macan, 1990). 
+Many of the tools students currently rely on are either too generic or too demanding for academic 
+use. Paper planners are straightforward but easy to misplace and inconvenient to update. Basic 
+to-do list apps are simple and accessible, yet they often fail to support academic specific needs such 
+as grouping tasks by module, assigning weighted priorities, or setting reminders based on deadlines. 
+On the opposite end of the spectrum, advanced productivity platforms can feel overwhelming for 
+students who only want a focused study planner. Some of these platforms also hide essential 
+features behind paid subscriptions, creating an affordability barrier that discourages long-term use. 
+A further challenge is the inconsistency of access across different devices. Students frequently 
+switch between smartphones, university lab computers, and personal laptops throughout the day. 
+When planning data is not synchronised or easily accessible across all these contexts, users lose 
+trust in the tool and revert to improvised notes or scattered reminders. This project aims to close 
+that gap by developing a web based system with a responsive design and lightweight interaction 
+patterns. The intention is to support real daily behaviour: quickly checking what needs to be done 
+today, adding a new task in seconds, and receiving reminders before urgency turns into panic. 
+ 
+1.3. Scope 
+ 
+The scope of this project sets clear boundaries around what will and will not be delivered during 
+this academic work. Defining these limits early helps maintain focus and ensures that the final 
+outcome is both realistic and achievable within the module’s timeframe. 
+ 
+In scope are the essential features needed to create a functional and student-centred task 
+management system. These include user registration and login, full task CRUD operations, and 
+support for categories and priority tags. The system will also handle deadline and status tracking, 
+reminder notifications, dashboard summaries, and filtering and sorting options. A responsive 
+interface will be developed to ensure smooth use on both mobile and desktop browsers. In addition, 
+the project will incorporate basic analytics such as overdue task counts, completion rates, and 
+upcoming deadlines along with secure data storage using a relational model and validation to 
+prevent common user input errors. 
+ 
+Out of scope are features that, while valuable in professional productivity tools, exceed the time 
+and complexity constraints of this module. These include fully developed native mobile 
+applications, enterprise-level collaboration workflows, institution-wide integration with learning 
+management systems, and advanced machine-learning-based scheduling recommendations. 
+
+ 2 
+Although these capabilities could enhance the system in the future, excluding them now helps 
+maintain a manageable workload and keeps attention on the core needs of students. 
+The scope also covers documentation and evaluation. This means the final submission is not just a 
+working application but a complete engineering process supported by design reasoning, testing 
+evidence, and reflection on limitations. By defining the scope early, the project avoids feature creep 
+and supports structured, realistic planning throughout development. 
+ 
+ 
+1.4. Intended outcome 
+ 
+The intended outcome of this project is to deliver a reliable and genuinely usable application that 
+enables students to plan their work with less friction and fewer missed deadlines. The final system 
+should allow users to create tasks quickly, attach meaningful context such as module, due date, and 
+priority, and monitor their progress through simple and intuitive visual summaries. The interface 
+must remain clear and manageable even under real academic workload conditions, particularly 
+during busy weeks when many tasks are active at the same time. 
+From an academic perspective, the intended outcome also involves demonstrating that software 
+development decisions were made deliberately and supported by clear reasoning. These decisions 
+should be tested against criteria that reflect real user needs and behaviours. A successful result will 
+show competence in key areas such as web development, database modelling, authentication 
+mechanisms, and front-end usability design. It will also provide evidence that project management 
+choices were realistic and that potential risks were addressed thoughtfully rather than overlooked. 
+technologies. 
+ 
+ 
+1.5. Objectives 
+ 
+To achieve the overall aim of the project, a set of clear and structured objectives has been defined. 
+These objectives guide both the development process and the final functionality of the system, 
+ensuring that the application meets the academic and practical needs of its intended users. 
+ 
+Primary Objectives 
+ 
+The first set of objectives focuses on the core functionality required to deliver a meaningful and 
+effective task-management solution for students. 
+ 
+• To design and develop a Progressive Web Application tailored to students’ academic needs. 
+The system should operate seamlessly across devices and provide a consistent experience whether 
+accessed on a laptop, tablet, or smartphone. As a Progressive Web Application, it must combine the 
+accessibility of a website with the reliability and convenience of an installed app, ensuring students 
+can manage their workload anytime and anywhere. 
+• To implement secure user authentication and data management. Protecting user information 
+is essential, especially when dealing with personal schedules and academic commitments. The 
+project aims to incorporate secure login mechanisms, proper password handling, and structured data 
+management practices to maintain privacy and trust. 
+• To enable efficient task creation, tracking, and prioritisation. Students should be able to add 
+tasks quickly, organise them by module or category, and assign priorities that reflect their academic 
+workload. The system must support smooth tracking of progress and provide clear visibility of what 
+needs attention. 
+• To integrate push notifications and smart reminders. Timely reminders are crucial for 
+preventing missed deadlines. The application will include push notifications and intelligent 
+
+ 3 
+reminder logic to alert students before tasks become urgent, helping them stay ahead of their 
+workload. 
+• To provide offline functionality using service workers. Recognising that students may not 
+always have stable internet access, the system will support offline use. Service workers will allow 
+essential features such as viewing tasks or adding new ones to function even without connectivity, 
+improving reliability in real-world scenarios. 
+ 
+Secondary Objectives 
+ 
+The secondary objectives support the broader quality, usability, and maintainability of the system. 
+While not the core functional requirements, they significantly enhance the overall value of the 
+application. 
+ 
+• To design a responsive and accessible user interface based on Human-Computer Interaction 
+(HCI) principles. The interface should be intuitive, visually clear, and accessible to a wide range of 
+users. Applying HCI principles ensures that the design supports efficient interaction, reduces 
+cognitive load, and accommodates different devices and screen sizes. 
+• To develop a relational database for secure and structured data storage. A well-designed 
+relational database will ensure that user data, tasks, categories, and reminders are stored securely 
+and efficiently. This structure supports data integrity, scalability, and reliable performance. 
+• To incorporate productivity analytics and performance dashboards. Students benefit from 
+insights into their study habits. The system will include analytics such as completion rates, overdue 
+task counts, and upcoming deadlines, presented through clear dashboard components that help users 
+understand their progress. 
+• To conduct system testing, usability evaluation, and performance analysis. Thorough testing 
+is essential to ensure the system behaves reliably under real conditions. This includes functional 
+testing, usability assessments, and performance checks to identify issues early and refine the user 
+experience. 
+• To deploy the application using modern web hosting platforms. Deployment ensures that the 
+system is accessible to users in a stable and scalable environment. Using contemporary hosting 
+solutions supports reliability, security, and ease of maintenance. 
+ 
+• To produce comprehensive technical documentation and reports. Clear documentation is vital 
+for demonstrating the engineering process behind the system. This includes design rationale, 
+implementation details, testing evidence, and reflective analysis, ensuring the project is 
+academically robust and professionally presented. 
+ 
+ 
+ 
+2. Contextual research 
+ 
+2.1. Context investigation 
+ 
+Effective time management is a critical determinant of academic success. University students must 
+balance coursework, assignments, examinations, part-time employment, and personal commitments. 
+Without proper planning and organisation, students often experience stress, reduced productivity, 
+and missed deadlines. In today's fast-paced educational environment, digital tools have become 
+essential for managing academic responsibilities efficiently. 
+The rapid advancement of information technology has transformed traditional approaches to 
+organisation and productivity. Students increasingly rely on smartphones, tablets, and laptops for 
+learning and communication (Trueman, 1996). As a result, there is a growing demand for digital 
+
+ 4 
+solutions that provide accessibility, flexibility, and efficiency across multiple platforms. Task 
+management applications have emerged as essential tools to support students in organising their 
+academic and personal schedules. 
+Despite the availability of various productivity tools, many existing solutions are not tailored 
+specifically to academic needs. Some applications are overly complex, require subscription fees, or 
+lack features such as deadline prioritisation, offline functionality, and performance analytics. 
+Additionally, students frequently switch between devices, creating a need for cross-platform 
+compatibility and seamless data synchronisation. 
+ 
+Progressive Web Applications (PWAs) provide an innovative solution by combining the advantages 
+of web and mobile applications (Developers, 2023). PWAs are accessible through web browsers 
+while offering app-like features such as offline functionality, installability, push notifications, and 
+responsive interfaces (Network, 2024). These characteristics make PWAs particularly suitable for 
+students who require reliable and accessible tools to manage their academic workload. 
+The proposed Student Task Management Web Application aims to address these challenges by 
+delivering a cost-effective, user-friendly, and installable system. By leveraging modern web 
+technologies, the application will support students in organising tasks, tracking deadlines, and 
+enhancing productivity, thereby contributing to improved academic performance and reduced 
+stress. 
+  
+ 
+2.2. Supporting theory research 
+ 
+The development of the proposed system is firmly grounded in well-established theories and 
+principles drawn from computing, human–computer interaction, and productivity research. These 
+theoretical foundations provide a structured framework that informs the system’s design decisions, 
+guides the user-experience strategy, and ensures that the final application is both technically robust 
+and aligned with real user behaviour (Misra, 2000). By integrating insights from these disciplines, 
+the project aims to create a solution that is not only functional but also intuitive, efficient, and 
+supportive of students’ academic needs. 
+ 
+2.3. Similar products review 
+ 
+To evaluate the effectiveness and relevance of the proposed Student Task Management Web 
+Application, a number of existing productivity and task-management tools were examined. This 
+review provides insight into how current solutions operate, what they do well, and where they fall 
+short in supporting the specific needs of university students. By analysing their strengths and 
+limitations, it becomes possible to identify the research gap that the proposed system aims to 
+address and to justify the design decisions made throughout the project. 
+ 
+2.3.1 Todoist 
+ 
+Overview: Todoist is a widely used task management application designed for personal and 
+professional productivity (Doist, 2024). 
+ 
+Key Features: 
+ 
+Task scheduling and prioritisation  
+Recurring deadlines and reminders  
+Cross-platform synchronisation  
+Collaboration and project tracking  
+Productivity tracking through Karma scores  
+
+ 5 
+ 
+Strengths: 
+ 
+Intuitive interface and ease of use  
+Available on multiple platforms  
+Reliable reminder system  
+ 
+Limitations: 
+ 
+Premium subscription required for advanced features  
+Limited offline capabilities in the free version  
+Not specifically tailored for students 
+ 
+2.3.2 Microsoft To Do 
+ 
+          Overview: Microsoft To Do is a cloud-based task management system integrated with       
+Microsoft services (Microsoft, 2024). 
+ 
+Key Features: 
+ 
+Task scheduling and reminders  
+Integration with Outlook  
+Cross-device synchronisation  
+User-friendly interface  
+ 
+Strengths: 
+ 
+Free to use  
+Seamless integration with Microsoft Office  
+Simple and efficient design  
+ 
+Limitations: 
+ 
+Limited productivity analytics  
+Requires a Microsoft account  
+Lacks academic-specific features  
+ 
+ 
+ 
+ 
+ 
+3. Software definition 
+ 
+3.1. Requirements analysis 
+ 
+Requirements analysis plays a crucial role in defining both the functional and non-functional needs 
+of the proposed system, ensuring that it aligns with user expectations and supports the overall 
+objectives of the project. By clearly identifying what the system must do and how it should 
+perform, this stage establishes a solid foundation for design, development, and evaluation, helping 
+to ensure that the final application is both effective and reliable. 
+ 
+
+ 6 
+3.1.1 Stakeholders 
+ 
+Primary Users: University students.  
+Project Developer: Asbin Pandey.  
+Project Mentor: Vijay Chennareddy.  
+Academic Institution: Ulster University.  
+Future Developers and Evaluators. 
+ 
+ 
+3.2. Risk analysis 
+Risk analysis is a critical component in ensuring the successful development and deployment of the 
+Student Task Management Web Application. It extends beyond simply listing potential issues; it 
+requires a systematic process of identifying, evaluating, and mitigating challenges before they can 
+impact progress. By adopting a structured and proactive approach, the project anticipates 
+uncertainties rather than reacting to them, which significantly enhances reliability and project 
+control. 
+This forward-looking mindset helps minimise delays, reduce unforeseen complications, and 
+maintain consistent momentum throughout the development lifecycle. Each identified risk is 
+assessed in terms of its likelihood and potential impact, allowing prioritisation of mitigation 
+strategies for those most likely to affect delivery. Typical risks include technical integration issues, 
+time constraints due to overlapping coursework, and unforeseen design adjustments during testing. 
+Contingency time has been deliberately built into the schedule to absorb such disruptions without 
+compromising quality. This buffer supports flexibility for resolving integration challenges, refining 
+documentation, and improving usability based on feedback. By embedding risk management into 
+every development phase, the project maintains resilience and ensures that corrective actions can be 
+taken swiftly when deviations occur. 
+Ultimately, effective risk analysis strengthens the foundation of the project, enabling a smoother, 
+more predictable path to completion. It ensures that the final system is not only functional but also 
+robust, reliable, and ready for demonstration under real academic conditions. 
+ 
+3.2.1. Table: Risk Analysis Summary 
+ 
+Risk ID Description Likelihood Impact Mitigation 
+Strategy 
+R1 
+Overlapping 
+coursework 
+deadlines causing 
+time pressure and 
+reduced focus on 
+development 
+tasks. 
+High High 
+Allocate 
+contingency time 
+in the schedule; 
+use weekly 
+progress tracking 
+to maintain 
+momentum. 
+R2 
+Technical 
+integration issues 
+between front-end 
+and back-end 
+components. 
+Medium High 
+Conduct early 
+integration 
+testing; maintain 
+modular code 
+structure to 
+isolate faults. 
+R3 
+Data loss or 
+corruption during 
+testing or 
+deployment. 
+Low High 
+Implement 
+regular backups 
+and version 
+control using 
+GitHub; test 
+
+ 7 
+database 
+operations 
+thoroughly. 
+R4 
+Scope creep due 
+to new feature 
+ideas emerging 
+during 
+development. 
+Medium Medium 
+Apply MoSCoW 
+prioritisation; 
+document all 
+change requests 
+and evaluate 
+against available 
+time. 
+R5 
+Usability issues 
+identified late in 
+testing phase. 
+Medium High 
+Conduct iterative 
+user testing after 
+each sprint; 
+gather early 
+feedback from 
+peers and mentor. 
+R6 
+Inconsistent 
+documentation or 
+missing evidence 
+for academic 
+submission. 
+Medium Medium 
+Maintain weekly 
+logs and update 
+documentation 
+alongside 
+development; 
+review against 
+checklist. 
+R7 
+Unexpected 
+technical failures 
+during final 
+demonstration. 
+Low High 
+Reserve final 
+hardening 
+window for 
+regression testing; 
+prepare backup 
+deployment 
+environment. 
+ 
+ 
+ 
+ 
+3.3. Design (including system design, data design, and User experience design) 
+ 
+• System design for the proposed application follows a standard and well-structured web 
+architecture, consisting of three core layers: the presentation layer, the application layer, and 
+the data layer. Each layer has a distinct responsibility, and this separation of concerns makes 
+the system easier to test, maintain, and extend over time (Developers, 2023). The 
+presentation layer manages the user interface, handling all interaction and visual display 
+elements. The application layer contains the business logic, where server endpoints process 
+validation, enforce rules, and manage data operations. Finally, the data layer is responsible 
+for persistence, ensuring that all user and task information is stored securely and retrieved 
+efficiently when needed.  
+
+ 8 
+ 
+  
+                                       Figure: System Architecture Diagram 
+ 
+ 
+ 
+ 
+• Data design is based on a relational structure centred around the user and task tables, with 
+optional fields for categories and reminders. This approach supports a clear one-to-many 
+relationship, where each user can own multiple tasks. The relational model ensures data 
+integrity and allows the system to scale as users create more tasks. To improve performance, 
+especially for dashboard views, key fields such as due dates and task statuses are indexed. 
+This optimisation ensures that queries remain fast even as the dataset grows, allowing the 
+system to deliver timely and accurate information to the user. 
+ 
+             
+                                  Figure: ER Diagram 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+• User experience design in this project is shaped around three core principles: capturing 
+tasks quickly, seeing priorities clearly, and making updates feel effortless. These aren’t 
+
+
+ 9 
+abstract design ideals they come directly from how real students workday to day. When 
+someone is juggling lectures, deadlines, part-time jobs, and society commitments, they don’t 
+have time to fight with a complicated interface. They need something that responds instantly 
+and gets out of the way. 
+The dashboard reflects this reality. It brings the most time-sensitive information today’s tasks and 
+upcoming deadlines right to the front, so students can immediately understand what needs attention. 
+Everything else is still accessible, but it doesn’t crowd the screen or distract from the essentials. 
+Filtering and sorting tools are available when needed, yet they stay subtle and unobtrusive, 
+supporting the user rather than overwhelming them. The overall experience aims to feel calm, 
+organised, and genuinely helpful, even during the busiest weeks of the academic year. 
+ 
+ 
+ 
+ 
+Figure: Deployment Environment 
+ 
+ 
+ 
+
+
+ 10 
+ 
+     
+  Figure: Dashboard Wireframe  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Navigation throughout the application is intentionally shallow. Users should be able to reach 
+essential actions such as adding a task, editing a task, completing a task, or viewing urgent items 
+within one or two clicks. This reduces cognitive load and supports efficient daily use. Colour and 
+icon usage is restrained and semantic, chosen to enhance readability and accessibility rather than 
+distract. The design avoids unnecessary visual noise, ensuring that the interface remains clean and 
+supportive of focused work. 
+Error handling is treated as an integral part of the user experience rather than an afterthought. 
+Validation messages are positioned close to the relevant input fields and written in clear, plain 
+language. Instead of displaying generic failure notices, the system explains exactly what needs to be 
+corrected for example, when a date is invalid or a required field is missing. This approach reduces 
+user frustration and increases the likelihood of successful task entry, especially during quick 
+interactions. 
+The interface also considers real-world interruption scenarios. Students often add tasks while 
+moving between classes, during short breaks, or in busy environments. To support this behaviour, 
+the design includes short forms, sensible default values, and immediate save confirmations. These 
+small but meaningful details make the system more practical and reliable in everyday academic life. 
+Ultimately, these usability-focused decisions contribute more to the system’s effectiveness than 
+
+
+ 11 
+purely aesthetic enhancements, ensuring that the application genuinely supports students in 
+managing their workload. 
+ 
+4. Planning 
+ 
+4.1. Methodology 
+An iterative, Agile-inspired approach is used for this project because requirements naturally become 
+clearer once early prototypes are tested and feedback is gathered. Instead of attempting to finalise 
+every detail upfront, the work is divided into short, manageable cycles. Each cycle follows a simple 
+rhythm: define the goals, build a small functional increment, test it, collect feedback, and adjust. 
+This approach ensures that progress continues even when initial assumptions change, and it allows 
+the system to evolve in response to real user needs rather than theoretical expectations. 
+The methodology places strong emphasis on producing tangible deliverables rather than relying 
+solely on documentation to demonstrate progress. At the end of each cycle, there should be a 
+verifiable output such as a working login system, functional task CRUD operations, a reminder 
+workflow, or dashboard metrics. These concrete outputs provide objective evidence of momentum 
+and make it easier to identify risks early. When something is not working as expected, it becomes 
+visible sooner, allowing corrective action before issues escalate. 
+Testing is integrated into every cycle rather than postponed until the end of development. This 
+continuous testing approach includes checking form validation, verifying the authentication flow, 
+ensuring task state transitions behave correctly, and confirming that the responsive layout adapts 
+properly across devices. When defects appear repeatedly, the process includes a root-cause analysis 
+to understand why the issue persists and to guide improvements in both code quality and 
+development practices. 
+Review checkpoints are designed to evaluate the system from both technical and user-oriented 
+perspectives. Technical reviews focus on code behaviour, data integrity, and system stability, 
+ensuring that the underlying architecture functions correctly. User-focused reviews, on the other 
+hand, assess how quickly tasks can be completed, how intuitive the interface feels, and whether the 
+design supports efficient daily use. Combining these two perspectives prevents the common mistake 
+of declaring a feature “complete” simply because it compiles or passes a narrow functional test. 
+Instead, a feature is only considered complete when it works reliably and delivers a smooth, 
+meaningful experience for the user. 
+ 
+4.2. Initial plans 
+ 
+Initial planning for the project was organised across a series of structured phases: requirements and 
+research, architecture and UI design, core implementation, testing and refinement, and final 
+documentation. Each phase was aligned with the module’s assessment checkpoints to avoid 
+last-minute pressure and ensure steady, manageable progress throughout the semester. This phased 
+approach provided a clear roadmap and helped maintain focus on both technical development and 
+academic deliverables. 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure: Project Timeline / Gantt Chart 
+
+ 12 
+ 
+ 
+ 
+Phase 1 concentrated on clarifying user needs and translating them into measurable, actionable 
+requirements. This involved analysing student workflows, identifying pain points, and defining the 
+essential features the system needed to support. 
+ 
+ Phase 2 focused on producing early design artefacts, including wireframes, draft data models, and 
+decisions about the technology stack. These outputs served as the foundation for implementation 
+and ensured that development began with a clear vision. 
+ 
+Phase 3 marked the start of core implementation. The priority was to build secure authentication 
+and basic task operations, as these form the backbone of the system. Once these were stable, 
+development moved on to more advanced features such as reminder functionality and dashboard 
+components.  
+ 
+Phase 4 emphasised bug fixing, usability improvements, and gathering evaluation evidence to 
+demonstrate that the system met its intended objectives. 
+Contingency time was deliberately built into the plan because student projects often encounter 
+unexpected delays, whether from overlapping coursework deadlines or technical challenges. Buffer 
+time was reserved for integration issues, design adjustments, and improving the quality of 
+documentation. This flexibility helped maintain the standard of the final report without 
+compromising the completeness of core features. 
+The initial plan also included a final hardening window dedicated to regression testing and aligning 
+all documentation. This stage is particularly important because late-stage changes can 
+unintentionally break previously stable features. By reserving time for thorough retesting, the 
+project reduced the risk of last-minute failures and increased confidence in the system’s stability 
+during demonstration. 
+Communication planning was simple but intentional. Weekly progress notes, issue tracking, and 
+decision logs were maintained throughout development. These records supported reflective writing 
+and made it easier to justify why certain features were reduced, delayed, or redesigned. They also 
+provided a transparent trail of reasoning that strengthened the academic credibility of the project. 
+ 
+
+
+ 13 
+ 
+References 
+Developers, G. (2023) Progressive Web Apps. Available from: https://web.dev/learn/pwa/ 
+[Accessed 15 april 2026].  
+Doist (2024) Todoist Features. [web]. Available from: https://todoist.com/features [Accessed 15 
+april 2026].  
+Macan, T.H..S.C..D.R.L.&.P.A.P. (1990) College students’ time management: Correlations with 
+academic performance and stress. Journal of Educational Psychology, 82 (4), pp.760-68. [Accessed 
+15 april 2026].  
+Microsoft (2024) Microsoft To Do. [web]. Available from: https://to-do.microsoft.com [Accessed 
+15 april 2026].  
+Misra, R.&.M.M. (2000) College students’ academic stress and its relation to their anxiety, time 
+management, and leisure satisfaction. American Journal of Health Studies, 16 (1), pp.41-51. 
+[Accessed 15 april 2026].  
+Network, M.D. (2024) Service Workers: an Introduction. Available from: 
+https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API [Accessed 15 april 2026].  
+Trueman, M.&.H.J. (1996) A comparison between the time-management skills and academic 
+performance of mature and traditional-entry university students. Higher Education, 32 (2), pp.199-
+215. [Accessed 15 april 2026].  
+ 
+Appendices 
+Appendix A – Functional Requirements 
+• User registration 
+• User login 
+• Task creation 
+• Task editing 
+• Task deletion 
+• Task categorisation 
+• Priority tagging 
+• Deadline assignment 
+• Reminder creation 
+• Dashboard display of tasks 
+• Task filtering 
+• Task sorting 
+• Offline access (service worker) 
+• Push notification support 
+Appendix B – Non-Functional Requirements 
+• Responsive layout 
+• Accessibility compliance 
+• Secure authentication 
+• Data validation 
+• Data integrity 
+• Fast load performance 
+• Cross-device compatibility 
+• Reliable synchronisation 
+Appendix C – Stakeholder List 
+• University students (end users) 
+• Developer: Asbin Pandey 
+
+ 14 
+• Project Mentor: Vijay Chennareddy 
+• Ulster University 
+• Future maintainers/evaluators 
+Appendix D – Risk Register (Extract) 
+    
+    
+    
+    
+    
+    
+Appendix E – Wireframe Descriptions 
+• Dashboard: List of today’s tasks, upcoming deadlines, quick-add button. 
+• Task Form: Fields for title, module, due date, priority, notes. 
+• Task List: Filters for module, priority, status. 
+• Settings: Notification preferences, account details. 
+Appendix F – Data Model (Text Description) 
+• User: user_id (PK), name, email, password_hash 
+• Task: task_id (PK), user_id (FK), title, description, due_date, priority, status 
+• Category: category_id (PK), user_id (FK), category_name 
+• Reminder: reminder_id (PK), task_id (FK), reminder_time 
+Appendix G – Development Log (Extract) 
+• Week 1–2: Requirements gathering, contextual research 
+• Week 3–4: Wireframes, data model, architecture decisions 
+• Week 5–7: Authentication and CRUD implementation 
+• Week 8–9: Reminders, dashboard, offline mode 
+• Week 10–11: Testing and usability adjustments 
+• Week 12: Documentation and final review 
+Appendix H – Testing Evidence (Extract) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Risk Likelihood Impact Mitigation     
+Feature creep Medium High Scope control     
+Data loss Low High Backups, validation     
+Authentication failure Medium Medium Secure libraries, testing     
+Time constraints High High Agile cycles, buffer time     
+Device compatibility 
+issues Medium Medium Responsive testing     
+
+ 15 
+ 
+ 
+ 
+ 
+ 
+Screenshot: Login Success
+ 
+ 
+ 
+ 
+ 
+Screenshot: Login Error 
+ 
+ 
+ 
+ 
+ 
+
+
+ 16 
+Screenshot: Task Creation
+ 
+ 
+ 
+Screenshot: Task Editing 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+   Task deletion test: Task removed from list 
+ 
+ 
+
+
+ 17 
+ 
+ 
+ 
+ 
+ 
+Screenshot: Reminder 
+ 
+ 
+ 
+ 
+ 
+ 
+Screenshot: Responsive Mobile View 
+
+
+ 18 
+ 
+ 
+ 
+ 
+ 
+ 
+Screenshot: Offline View 
+ 
+ 
+ 
+ 
+ 
+ 
+• Login test: Valid credentials → success 
+• Login test: Invalid credentials → error displayed 
+• Task creation test: Required fields validated 
+• Task editing test: Updates saved correctly 
+• Task deletion test: Task removed from list 
+• Reminder test: Reminder stored and triggered 
+• Responsive test: Layout adapts on mobile and desktop 
+• Offline test: Tasks viewable without connection 
+
+
+ 19 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

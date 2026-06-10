@@ -1,0 +1,107 @@
+AT3 Video Demonstration Script
+
+Hello, my name is Asbin Pandey, and this is my AT3 video demonstration for my Final Year Project, the Student Task Management Web Application.
+
+The aim of this project is to develop a web application as a Progressive Web Application, or PWA, that helps university students manage coursework, deadlines, reminders, and productivity in one place.
+
+In this demonstration, I will show the project structure, how to run the application, the main system features, and a brief overview of the source code.
+
+Part 1: Project Structure
+
+First, I am showing the project folder in Visual Studio Code.
+The backend code is inside the app folder.
+The frontend code is inside the frontend folder.
+The project also includes the requirements file, the SQLite database, and the demo data seed script.
+
+Part 2: Running the System
+
+First, I install the required dependencies.
+
+pip install -r requirements.txt
+
+Next, I seed the demo data for testing and demonstration.
+
+python seed_demo.py --reset-demo
+
+Now I start the FastAPI application.
+
+uvicorn app.main:app --host 127.0.0.1 --port 8000
+
+The application is now running locally in the browser.
+
+Part 3: Login
+
+This is the login page of the Student Task Management web application.
+I will log in using the demo account.
+
+Email: demo@studenttasks.example.com
+Password: Password123
+
+After login, the system loads the main dashboard.
+
+Part 4: Dashboard
+
+This is the dashboard view.
+It shows today's tasks, upcoming deadlines, overdue tasks, and the completion rate.
+These analytics support the main objective of helping students stay organised and avoid missed deadlines.
+
+Part 5: Task Management
+
+Now I will create a new task.
+I enter the task title, description, due date, priority, status, category, and reminder.
+Then I save the task.
+
+The task now appears in the task list.
+Next, I will edit the task to show update functionality.
+I can also mark the task as complete.
+Finally, I can delete a task.
+
+This demonstrates the full CRUD functionality: create, read, update, and delete.
+
+Part 6: Categories and Modules
+
+The system also allows students to organise tasks by module or category.
+For example, I can add modules such as Database Systems, Web Development, or Final Year Project.
+
+Part 7: Filtering and Sorting
+
+The task list can be filtered by module, priority, and status.
+It can also be sorted by due date, priority, or title.
+This supports quick navigation and makes the system easier to use under academic workload pressure.
+
+Part 8: Settings
+
+This is the settings section.
+It shows notification preferences, account details, and sync status.
+The user can enable browser reminders if permission is granted.
+
+Part 9: Offline and PWA Features
+
+This web application is designed as a Progressive Web Application.
+It includes a service worker for offline support.
+Previously loaded task data can still be viewed while offline.
+Task changes can also be queued offline and synchronised when the internet connection returns.
+
+Part 10: Source Code Overview
+
+I will now briefly show the main source code files.
+
+The main backend entry point is app/main.py.
+The database models are in app/models.py.
+Validation logic is in app/schemas.py.
+Authentication and password hashing are handled in app/security.py.
+
+On the frontend, the main page structure is in frontend/index.html.
+The application logic is in frontend/app.js.
+The PWA offline support is implemented in frontend/service-worker.js.
+
+The sample demo data is created using seed_demo.py.
+
+Part 11: Closing
+
+In conclusion, this project demonstrates a working student task management web application developed as a Progressive Web Application.
+It includes secure authentication, relational database storage, task CRUD operations, categories, reminders, analytics, filtering, sorting, responsive design, and offline support.
+
+These features align with the aims and objectives defined in my AT1 and AT2 work.
+
+Thank you for watching my AT3 demonstration.
