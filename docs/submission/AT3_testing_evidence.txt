@@ -22,7 +22,8 @@ The run_demo.ps1 script automatically checks whether the chosen port is already 
 If the preferred port is busy, it starts the application on the next available port automatically.
 
 Browser URL
-http://127.0.0.1:8004
+Use the local URL shown by run_demo.ps1, for example:
+http://127.0.0.1:8003
 
 Functional Testing
 
@@ -237,6 +238,7 @@ frontend/app.js
 frontend/service-worker.js
 tests/test_api_smoke.py
 run_demo.ps1
+README.md
 
 Conclusion
 The application satisfies the main AT2 requirements through secure authentication, relational data storage, task CRUD, categorisation, reminders, dashboard analytics, filtering, sorting, offline support, responsive design, and push notification support.

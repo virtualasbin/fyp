@@ -11,21 +11,15 @@ Part 1: Project Structure
 First, I am showing the project folder in Visual Studio Code.
 The backend code is inside the app folder.
 The frontend code is inside the frontend folder.
-The project also includes the requirements file, the SQLite database, and the demo data seed script.
+The project also includes the requirements file, the Render deployment configuration, the demo data seed script, and supporting submission documents inside the docs folder.
 
 Part 2: Running the System
 
-First, I install the required dependencies.
+For local demonstration, I can run the project using the helper script.
 
-pip install -r requirements.txt
+.\run_demo.ps1
 
-Next, I seed the demo data for testing and demonstration.
-
-python seed_demo.py --reset-demo
-
-Now I start the FastAPI application.
-
-uvicorn app.main:app --host 127.0.0.1 --port 8000
+This script installs dependencies, seeds the demo data, and automatically selects a free port if the default port is busy.
 
 The application is now running locally in the browser.
 
