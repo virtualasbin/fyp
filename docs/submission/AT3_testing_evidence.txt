@@ -15,10 +15,10 @@ python seed_demo.py --reset-demo
 python -m uvicorn app.main:app --host 127.0.0.1 --port 8004
 
 Option 2:
-.\run_demo.ps1
+.\scripts\run_demo.ps1
 
 Note:
-The run_demo.ps1 script automatically checks whether the chosen port is already in use.
+The scripts\run_demo.ps1 script automatically checks whether the chosen port is already in use.
 If the preferred port is busy, it starts the application on the next available port automatically.
 
 Browser URL
@@ -214,7 +214,7 @@ python -m pytest -q
 
 Suggested Video Demonstration Order
 1. Show project folder.
-2. Run .\run_demo.ps1
+2. Run .\scripts\run_demo.ps1
 3. Open the app in browser.
 4. Log in with demo account.
 5. Show dashboard analytics.
@@ -237,7 +237,7 @@ frontend/index.html
 frontend/app.js
 frontend/service-worker.js
 tests/test_api_smoke.py
-run_demo.ps1
+scripts/run_demo.ps1
 README.md
 
 Conclusion

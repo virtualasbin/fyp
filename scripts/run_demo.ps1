@@ -4,6 +4,8 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
+$ProjectRoot = Split-Path -Parent $PSScriptRoot
+Set-Location $ProjectRoot
 
 function Get-PythonCommand {
     if (Get-Command python -ErrorAction SilentlyContinue) {

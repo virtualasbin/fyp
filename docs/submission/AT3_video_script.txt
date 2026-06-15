@@ -17,7 +17,7 @@ Part 2: Running the System
 
 For local demonstration, I can run the project using the helper script.
 
-.\run_demo.ps1
+.\scripts\run_demo.ps1
 
 This script installs dependencies, seeds the demo data, and automatically selects a free port if the default port is busy.
 

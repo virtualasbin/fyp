@@ -27,9 +27,9 @@ This project is a Progressive Web Application (PWA) for university students to m
 app/                    Backend code
 frontend/               Frontend and PWA files
 tests/                  Automated smoke test
+scripts/                Local helper scripts
 docs/requirements/      AT1 and AT2 text resources
 docs/submission/        AT3 demo script and testing evidence
-run_demo.ps1            Local demo runner with automatic port fallback
 seed_demo.py            Demo data seed script
 render.yaml             Render deployment configuration
 requirements.txt        Python dependencies
@@ -42,14 +42,14 @@ requirements.txt        Python dependencies
 Run the app with automatic dependency install, demo seeding, and free-port selection:
 
 ```powershell
-.\run_demo.ps1
+.\scripts\run_demo.ps1
 ```
 
 If PowerShell blocks the script:
 
 ```powershell
 Set-ExecutionPolicy -Scope Process Bypass
-.\run_demo.ps1
+.\scripts\run_demo.ps1
 ```
 
 ### Manual
