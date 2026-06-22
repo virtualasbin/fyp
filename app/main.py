@@ -137,7 +137,12 @@ def serialize_task_query(db: Session, user_id: int):
 def replace_task_reminders(task: Task, reminder_payloads: list, db: Session) -> None:
     task.reminders.clear()
     for reminder_payload in reminder_payloads:
-        task.reminders.append(Reminder(reminder_time=reminder_payload.reminder_time))
+        reminder_time = (
+            reminder_payload.reminder_time
+            if hasattr(reminder_payload, "reminder_time")
+            else reminder_payload.get("reminder_time")
+        )
+        task.reminders.append(Reminder(reminder_time=reminder_time))
     db.flush()
 
 

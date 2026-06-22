@@ -90,6 +90,25 @@ def test_auth_task_crud_dashboard_and_settings_flow():
     assert update_task_response.status_code == 200
     assert update_task_response.json()["status"] == "completed"
 
+    full_update_response = client.put(
+        f"/api/tasks/{task_id}",
+        headers=headers,
+        json={
+            "title": "Prepare final AT3 evidence",
+            "description": "Capture final screenshots and verify deployed reminder behaviour.",
+            "due_date": "2030-06-11T11:00:00",
+            "priority": "medium",
+            "status": "pending",
+            "category_id": category_id,
+            "reminders": [{"reminder_time": "2030-06-10T10:00:00"}],
+        },
+    )
+    assert full_update_response.status_code == 200
+    full_update_data = full_update_response.json()
+    assert full_update_data["title"] == "Prepare final AT3 evidence"
+    assert full_update_data["status"] == "pending"
+    assert len(full_update_data["reminders"]) == 1
+
     list_tasks_response = client.get("/api/tasks", headers=headers)
     assert list_tasks_response.status_code == 200
     assert len(list_tasks_response.json()) == 1
