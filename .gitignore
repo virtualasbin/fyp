@@ -8,3 +8,4 @@ tests/test_student_tasks.db
 docs/requirements/*.pdf
 docs/requirements/*.doc
 docs/requirements/*.docx
+AT3_*.zip

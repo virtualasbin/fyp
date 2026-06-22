@@ -62,4 +62,4 @@ Write-Host "Seeding demo data..."
 & $PythonCommand seed_demo.py --reset-demo
 
 Write-Host "Starting Student Task Manager on http://127.0.0.1:$SelectedPort"
-& $PythonCommand -m uvicorn app.main:app --host 127.0.0.1 --port $SelectedPort
+& $PythonCommand -m uvicorn backend.main:app --host 127.0.0.1 --port $SelectedPort

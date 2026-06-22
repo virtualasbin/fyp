@@ -2,7 +2,7 @@ from datetime import datetime
 
 from pydantic import BaseModel, ConfigDict, EmailStr, Field, field_validator, model_validator
 
-from app.models import TaskPriority, TaskStatus
+from backend.models import TaskPriority, TaskStatus
 
 
 class UserCreate(BaseModel):

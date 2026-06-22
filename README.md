@@ -23,16 +23,41 @@ This project is a Progressive Web Application (PWA) for university students to m
 
 ## Project Structure
 
+### Backend
+
 ```text
-app/                    Backend code
-frontend/               Frontend and PWA files
-tests/                  Automated smoke test
-scripts/                Local helper scripts
-docs/requirements/      AT1 and AT2 text resources
-docs/submission/        AT3 demo script and testing evidence
-seed_demo.py            Demo data seed script
-render.yaml             Render deployment configuration
+backend/                    FastAPI backend code, models, schemas, and security
+tests/                  Automated backend smoke test
 requirements.txt        Python dependencies
+seed_demo.py            Demo data seed script
+```
+
+### Frontend
+
+```text
+frontend/               HTML, CSS, JavaScript, manifest, and service worker
+```
+
+### Utilities
+
+```text
+scripts/                Local helper scripts for running and inspection
+```
+
+### Documentation
+
+```text
+docs/requirements/      AT1 and AT2 reference text files
+docs/submission/        AT3 video script and testing evidence
+README.md               Project overview and usage guide
+```
+
+### Deployment
+
+```text
+render.yaml             Render deployment configuration
+.python-version         Python version for deployment/runtime
+Procfile                Process entry for compatible hosts
 ```
 
 ## Local Run
@@ -57,7 +82,7 @@ Set-ExecutionPolicy -Scope Process Bypass
 ```powershell
 python -m pip install -r requirements.txt
 python seed_demo.py --reset-demo
-python -m uvicorn app.main:app --host 127.0.0.1 --port 8003
+python -m uvicorn backend.main:app --host 127.0.0.1 --port 8003
 ```
 
 Demo account:
@@ -82,10 +107,10 @@ python -m pytest -q
 
 ## Key Files
 
-- `app/main.py`: API routes and application startup
-- `app/models.py`: SQLAlchemy models
-- `app/schemas.py`: validation models
-- `app/security.py`: password hashing and JWT logic
+- `backend/main.py`: API routes and application startup
+- `backend/models.py`: SQLAlchemy models
+- `backend/schemas.py`: validation models
+- `backend/security.py`: password hashing and JWT logic
 - `frontend/index.html`: main UI structure
 - `frontend/app.js`: frontend application logic
 - `frontend/service-worker.js`: offline caching and notification handling

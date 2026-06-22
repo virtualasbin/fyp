@@ -12,8 +12,8 @@ if TEST_DB_PATH.exists():
 os.environ["DATABASE_URL"] = f"sqlite:///{TEST_DB_PATH.as_posix()}"
 os.environ["STUDENT_TASK_DISABLE_PUSH_WORKER"] = "1"
 
-from app.database import engine
-from app.main import app
+from backend.database import engine
+from backend.main import app
 
 
 client = TestClient(app)

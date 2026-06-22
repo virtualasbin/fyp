@@ -5,9 +5,9 @@ from datetime import datetime, timedelta
 
 from sqlalchemy import inspect
 
-from app.database import Base, SessionLocal, engine
-from app.models import Category, PushSubscription, Reminder, Task, TaskPriority, TaskStatus, User
-from app.security import hash_password
+from backend.database import Base, SessionLocal, engine
+from backend.models import Category, PushSubscription, Reminder, Task, TaskPriority, TaskStatus, User
+from backend.security import hash_password
 
 
 DEMO_EMAIL = "demo@studenttasks.example.com"

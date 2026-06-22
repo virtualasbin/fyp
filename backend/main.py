@@ -13,9 +13,9 @@ from pywebpush import WebPushException, webpush
 from sqlalchemy import and_, inspect
 from sqlalchemy.orm import Session, selectinload
 
-from app.database import Base, SessionLocal, engine, get_db
-from app.models import Category, PushSubscription, Reminder, Task, TaskStatus, User
-from app.schemas import (
+from backend.database import Base, SessionLocal, engine, get_db
+from backend.models import Category, PushSubscription, Reminder, Task, TaskStatus, User
+from backend.schemas import (
     AuthResponse,
     CategoryCreate,
     CategoryResponse,
@@ -31,7 +31,7 @@ from app.schemas import (
     UserSettingsResponse,
     UserSettingsUpdate,
 )
-from app.security import create_access_token, decode_access_token, hash_password, verify_password
+from backend.security import create_access_token, decode_access_token, hash_password, verify_password
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent

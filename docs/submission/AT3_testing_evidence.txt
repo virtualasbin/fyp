@@ -12,7 +12,7 @@ How To Run
 Option 1:
 python -m pip install -r requirements.txt
 python seed_demo.py --reset-demo
-python -m uvicorn app.main:app --host 127.0.0.1 --port 8004
+python -m uvicorn backend.main:app --host 127.0.0.1 --port 8004
 
 Option 2:
 .\scripts\run_demo.ps1
@@ -230,9 +230,9 @@ Suggested Video Demonstration Order
 15. Show source code files briefly.
 
 Important Files To Show
-app/main.py
-app/models.py
-app/schemas.py
+backend/main.py
+backend/models.py
+backend/schemas.py
 frontend/index.html
 frontend/app.js
 frontend/service-worker.js
