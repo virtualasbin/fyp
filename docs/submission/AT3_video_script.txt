@@ -35,7 +35,7 @@ Part 3: Project Structure
 
 Now I am showing the project folder in Visual Studio Code.
 
-The backend code is inside the app folder.
+The backend code is inside the backend folder.
 The frontend code is inside the frontend folder.
 The automated test is inside the tests folder.
 The helper scripts are inside the scripts folder.
@@ -58,7 +58,11 @@ For local demonstration, the project can be run using this helper command:
 
 This script installs dependencies, seeds demo data, and automatically selects a free port if the default one is busy.
 
+The script then starts the backend server and opens the application through the browser using the local URL shown in the terminal.
+
 However, for this presentation I am mainly using the deployed version of the application, because it demonstrates that the system is hosted publicly and ready to use.
+
+If needed, the project can also be started manually using Python and Uvicorn with the backend.main module.
 
 Part 5: Authentication
 
