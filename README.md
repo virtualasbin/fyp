@@ -44,14 +44,6 @@ frontend/               HTML, CSS, JavaScript, manifest, and service worker
 scripts/                Local helper scripts for running and inspection
 ```
 
-### Documentation
-
-```text
-docs/requirements/      AT1 and AT2 reference text files
-docs/submission/        AT3 video script and testing evidence
-README.md               Project overview and usage guide
-```
-
 ### Deployment
 
 ```text
@@ -115,9 +107,4 @@ python -m pytest -q
 - `frontend/app.js`: frontend application logic
 - `frontend/service-worker.js`: offline caching and notification handling
 - `tests/test_api_smoke.py`: automated smoke test
-
-## Submission Support
-
-- `docs/submission/AT3_video_script.txt`
-- `docs/submission/AT3_testing_evidence.txt`
 
